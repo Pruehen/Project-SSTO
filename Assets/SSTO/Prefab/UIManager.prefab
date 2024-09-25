@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8102303273376697466
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4598617582802229633}
+  - component: {fileID: -4793884365833017409}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4598617582802229633
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8102303273376697466}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-4793884365833017409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8102303273376697466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3df6b6e13c10ae246919bdc7f9feab6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aircraftMaster: {fileID: 0}
+  speedText: {fileID: 0}
+  altitudeText: {fileID: 0}
+  commonCenterUI: {fileID: 0}
+  firstCenterViewTransform: {fileID: 0}
+  thirdCenterViewTransform: {fileID: 0}
+  firstViewCanvas: {fileID: 0}
+  firstViewAdjustAngle: {x: 0, y: 0}
+  speedUV: {fileID: 0}
+  altitudeUV: {fileID: 0}
+  throttleGauge: {fileID: 0}
+  headingUIController: {fileID: 0}
+  checkpointReachedUI: {fileID: 0}
+  timeText: {fileID: 0}
+  scoreText: {fileID: 0}
+  targetText: {fileID: 0}
+  gunText: {fileID: 0}
+  mslText: {fileID: 0}
+  spwText: {fileID: 0}
+  dmgText: {fileID: 0}
+  mslIndicator: {fileID: 0}
+  spwIndicator: {fileID: 0}
+  aircraftImage: {fileID: 0}
+  spriteMaterial: {fileID: 0}
+  fontMaterial: {fileID: 0}
+  cautionColor: {r: 0, g: 0, b: 0, a: 0}
+  spwChangeAudioClip: {fileID: 0}
+  mslChangeAudioClip: {fileID: 0}
+  timeLowAudioClip: {fileID: 0}

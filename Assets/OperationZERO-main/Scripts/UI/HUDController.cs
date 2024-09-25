@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HUDController : MonoBehaviour
 {
-    public Transform target;
+    Transform target;
 
     public RectTransform hudRotationTransform;
     public RectTransform hudPositionTransform;
@@ -17,6 +17,8 @@ public class HUDController : MonoBehaviour
     {
         rectTransform = GetComponent<RectTransform>();
         HUDPositionFactor = HUDHeight / 90;
+
+        target = AircraftMaster.Instance.transform;
     }
 
     // Update is called once per frame

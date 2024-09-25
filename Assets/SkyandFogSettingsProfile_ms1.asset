@@ -86,7 +86,7 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0
   groundTint:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: {r: 0.5943396, g: 0.5943396, b: 0.5943396, a: 1}
   groundColorTexture:
     m_OverrideState: 1
@@ -105,7 +105,7 @@ MonoBehaviour:
     m_Value: {fileID: 8900000, guid: d5dbee160987865499c6322d1567fc79, type: 3}
   spaceEmissionMultiplier:
     m_OverrideState: 1
-    m_Value: 1000
+    m_Value: 200
   spaceRotation:
     m_OverrideState: 1
     m_Value: {x: 0, y: 0, z: 0}
@@ -116,7 +116,7 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 1
   alphaMultiplier:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   horizonTint:
     m_OverrideState: 0
@@ -286,7 +286,7 @@ MonoBehaviour:
   active: 1
   enable:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   localClouds:
     m_OverrideState: 1
     m_Value: 1
@@ -611,7 +611,7 @@ MonoBehaviour:
     m_Value: 0
   limitMin:
     m_OverrideState: 1
-    m_Value: 11
+    m_Value: 12
   limitMax:
     m_OverrideState: 1
     m_Value: 15
@@ -718,11 +718,11 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0
   proceduralCenter:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: {x: 0.5, y: 0.5}
   proceduralRadii:
-    m_OverrideState: 0
-    m_Value: {x: 0.15, y: 0.15}
+    m_OverrideState: 1
+    m_Value: {x: 0.1, y: 0.1}
   maskMinIntensity:
     m_OverrideState: 0
     m_Value: -30
@@ -730,5 +730,5 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 30
   proceduralSoftness:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0.5

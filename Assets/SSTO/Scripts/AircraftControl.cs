@@ -12,6 +12,7 @@ public class AircraftControl : MonoBehaviour
     [SerializeField] Transform _lr; //좌측 러더
     [SerializeField] Transform _rr; //우측 러더
     [SerializeField] List<JetEngineController> jetEngineControllers;//엔진
+    [SerializeField] bool hasControlWing = false;
 
     [Header("비필수 피봇")]
     [SerializeField] Transform _lc;
@@ -72,15 +73,19 @@ public class AircraftControl : MonoBehaviour
         this._rollTarget = roll;
         this._yawTarget = yaw;
         this._throttleTarget = throttle;
+        Debug.Log(pitch);
     }
-        private void Start()
+    private void Start()
     {
-        _laAxis = _la.localRotation;
-        _raAxis = _ra.localRotation;
-        _leAxis = _le.localRotation;
-        _reAxis = _re.localRotation;
-        _lrAxis = _lr.localRotation;
-        _rrAxis = _rr.localRotation;
+        if (hasControlWing)
+        {
+            _laAxis = _la.localRotation;
+            _raAxis = _ra.localRotation;
+            _leAxis = _le.localRotation;
+            _reAxis = _re.localRotation;
+            _lrAxis = _lr.localRotation;
+            _rrAxis = _rr.localRotation;
+        }
 
         if (_lc != null && _rc != null)
         {
@@ -95,20 +100,25 @@ public class AircraftControl : MonoBehaviour
     }
     // Update is called once per frame
     void Update()
-    {      
+    {
+        SetAxisValue(PlayerInputCustom.Instance.pitchAxis, PlayerInputCustom.Instance.rollAxis, PlayerInputCustom.Instance.yawAxis, PlayerInputCustom.Instance.throttleAxis);//테스트 코드
+
         pitch = Mathf.Lerp(pitch, _pitchTarget, Time.deltaTime * _controlPower);
         roll = Mathf.Lerp(roll, _rollTarget, Time.deltaTime * _controlPower);
         yaw = Mathf.Lerp(yaw, _yawTarget, Time.deltaTime * _controlPower);
         throttle = Mathf.Lerp(throttle, _throttleTarget, Time.deltaTime * _engineDelay);
 
-        _la.localRotation = _laAxis * Quaternion.Euler(roll * _a_Range, 0, 0);
-        _ra.localRotation = _raAxis * Quaternion.Euler(-roll * _a_Range, 0, 0);
+        if (hasControlWing)
+        {
+            _la.localRotation = _laAxis * Quaternion.Euler(roll * _a_Range, 0, 0);
+            _ra.localRotation = _raAxis * Quaternion.Euler(-roll * _a_Range, 0, 0);
 
-        _le.localRotation = _leAxis * Quaternion.Euler((roll * _e_Range + -pitch * _e_Range) * 0.5f, 0, 0);
-        _re.localRotation = _reAxis * Quaternion.Euler((-roll * _e_Range + -pitch * _e_Range) * 0.5f, 0, 0);
+            _le.localRotation = _leAxis * Quaternion.Euler((roll * _e_Range + -pitch * _e_Range) * 0.5f, 0, 0);
+            _re.localRotation = _reAxis * Quaternion.Euler((-roll * _e_Range + -pitch * _e_Range) * 0.5f, 0, 0);
 
-        _lr.localRotation = _lrAxis * Quaternion.Euler(0, -yaw * _r_Range, 0);
-        _rr.localRotation = _rrAxis * Quaternion.Euler(0, -yaw * _r_Range, 0);
+            _lr.localRotation = _lrAxis * Quaternion.Euler(0, -yaw * _r_Range, 0);
+            _rr.localRotation = _rrAxis * Quaternion.Euler(0, -yaw * _r_Range, 0);
+        }
 
         if (_lc != null && _rc != null)
         {
