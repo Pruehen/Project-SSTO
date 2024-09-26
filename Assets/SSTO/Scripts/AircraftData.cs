@@ -6,7 +6,7 @@ using UnityEngine;
 //해당 항공기의 FM 데이터
 public class AircraftData : MonoBehaviour
 {
-    [SerializeField] float enginePower;//엔진 추력(가속도)
+    [SerializeField] float enginePower;//엔진 추력(KN)
     [SerializeField] float pitchTorque;
     [SerializeField] float rollTorque;
     [SerializeField] float yawTorque;
@@ -35,7 +35,7 @@ public class AircraftData : MonoBehaviour
         float axis = aircraftControl.throttle;
         if (axis >= 0)
         {
-            return enginePower * enginePowerCurve.Evaluate(speed) * axis * Atmosphere.AtmosphericPressure(altitude * 0.5f);
+            return enginePower * enginePowerCurve.Evaluate(speed) * axis * Atmosphere.AtmosphericPressure(altitude * 0.5f) * 1000;
         }
         else
         {
@@ -139,11 +139,5 @@ public class AircraftData : MonoBehaviour
     public float GetParasiteDrag(float aoa, float speed)
     {
         return cdCurve.Evaluate(aoa) * liftPower * Atmosphere.AtmosphericPressure(transform.position.y) * speed * speed * 0.00005f;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

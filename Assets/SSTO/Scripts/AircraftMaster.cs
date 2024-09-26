@@ -15,9 +15,9 @@ public class AircraftMaster : SceneSingleton<AircraftMaster>
     /// 현재 항공기의 속도(km/h)를 반환하는 메서드 
     /// </summary>
     /// <returns></returns>
-    public float GetSpeed()
+    public Vector3 GetVelocity()
     {
-        return AircraftFM.Velocity.magnitude * 3.6f;
+        return AircraftFM.Velocity;
     }   
 
     private void Awake()

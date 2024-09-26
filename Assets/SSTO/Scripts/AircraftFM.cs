@@ -18,7 +18,6 @@ public class AircraftFM : MonoBehaviour
     public void Init(AircraftData aircraftData)
     {
         rb = this.gameObject.GetComponent<Rigidbody>();
-        rb.velocity = this.transform.forward * 200;
 
         this.aircraftData = aircraftData;
     }
@@ -30,7 +29,7 @@ public class AircraftFM : MonoBehaviour
         //Debug.Log(velocity);
 
         //엔진 추력 적용
-        rb.AddForce(this.transform.forward * aircraftData.EnginePower(velocitySpeed, this.transform.position.y), ForceMode.Acceleration);
+        rb.AddForce(this.transform.forward * aircraftData.EnginePower(velocitySpeed, this.transform.position.y), ForceMode.Force);
         //피치 토크 적용
         rb.AddTorque(this.transform.right * -aircraftData.PitchTorque(velocitySpeed), ForceMode.Acceleration);
         //롤 토크 적용
@@ -38,8 +37,8 @@ public class AircraftFM : MonoBehaviour
         //요 토크 적용
         rb.AddTorque(this.transform.up * aircraftData.YawTorque(velocitySpeed), ForceMode.Acceleration);
         //스톨 토크 적용
-        Vector3 stallAxis = Vector3.Cross(this.transform.forward, new Vector3(0, -1, 0));
-        rb.AddTorque(stallAxis * aircraftData.StallTorque(velocitySpeed), ForceMode.Acceleration);
+        //Vector3 stallAxis = Vector3.Cross(this.transform.forward, new Vector3(0, -1, 0));
+        //rb.AddTorque(stallAxis * aircraftData.StallTorque(velocitySpeed), ForceMode.Acceleration);
 
         Vector3 localVelocityDir = this.transform.InverseTransformDirection(rb.velocity).normalized;
         //정면 받음각

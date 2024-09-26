@@ -18,6 +18,7 @@ public class UIControl : MonoBehaviour
     UVController speedUV;
     [SerializeField]
     UVController altitudeUV;
+    [SerializeField] RectTransform crosshair;
 
     [SerializeField]
     Image throttleGauge;
@@ -32,6 +33,18 @@ public class UIControl : MonoBehaviour
         speedText.text = text;
 
         speedUV.SetUV(speed);
+    }
+    void SetCrosshair(Vector3 originPos, Vector3 velocity)
+    {
+        if(velocity.sqrMagnitude > 100)
+        {
+            crosshair.gameObject.SetActive(true);
+            crosshair.SetUIPos_WorldToScreenPos(originPos + velocity);
+        }        
+        else
+        {
+            crosshair.gameObject.SetActive(false);
+        }
     }
 
     void SetAltitude(int altitude)
@@ -75,7 +88,7 @@ public class UIControl : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //if (enableCount == true && remainTime > 0 && GameManager.Instance.IsGameOver == false) SetTime();
 
@@ -84,9 +97,10 @@ public class UIControl : MonoBehaviour
 
     void UpdateUI()
     {
-        SetSpeed((int)AircraftMaster.Instance.GetSpeed());
+        SetSpeed((int)(AircraftMaster.Instance.GetVelocity().magnitude * 3.6f));
+        SetCrosshair(AircraftMaster.Instance.transform.position, AircraftMaster.Instance.GetVelocity());
         SetAltitude((int)AircraftMaster.Instance.transform.position.y);
         SetThrottle(AircraftMaster.Instance.AircraftControl.throttle);
-        SetHeading(AircraftMaster.Instance.transform.eulerAngles.y);
+        SetHeading(AircraftMaster.Instance.transform.eulerAngles.y);        
     }
 }

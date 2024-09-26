@@ -28,7 +28,6 @@ public class PlayerInputCustom : SceneSingleton<PlayerInputCustom>
         pitchAxis = 0;
         rollAxis = 0;
         yawAxis = 0;
-        throttleAxis = 0;
 
         if (Input.GetKey(KeyCode.A))//요 좌측
         {
@@ -56,11 +55,11 @@ public class PlayerInputCustom : SceneSingleton<PlayerInputCustom>
         }
         if (Input.GetKey(KeyCode.LeftControl))//스로틀 다운
         {
-            throttleAxis -= 1;
+            throttleAxis -= Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.LeftShift))//스로틀 업
         {
-            throttleAxis += 1;
+            throttleAxis += Time.deltaTime;
         }
 
 
@@ -69,5 +68,6 @@ public class PlayerInputCustom : SceneSingleton<PlayerInputCustom>
 
         pitchAxis = Mathf.Clamp(pitchAxis, -1, 1);
         rollAxis = Mathf.Clamp(rollAxis, -1, 1);
+        throttleAxis = Mathf.Clamp(throttleAxis, -1, 1);
     }
 }
